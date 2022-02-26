@@ -1,15 +1,18 @@
-import { Switch, Route, Link, useLocation } from 'react-router-dom';
-
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-}
+import { Switch, Route, Link, useHistory } from 'react-router-dom';
 
 function App() {
-  const query = useQuery();
-  const name = query.get('name');
+  const history = useHistory();
+  console.log({history})
 
-  console.log(name);
-
+  const forward = () => {
+    history.goForward();
+  }
+  const back = () => {
+    history.goBack();
+  }
+  const push = (url) => {
+    history.push(url)
+  }
   return (
     <div>
       <nav>
@@ -23,6 +26,9 @@ function App() {
         </ul>
       </nav>
       <section>
+        <button onClick={back}>Back</button>
+        <button onClick={forward}>Forward</button>
+        <button onClick={() => push('/projects')}>Push</button>
         <Switch>
           <Route exact path="/">
             <h1>Home</h1>

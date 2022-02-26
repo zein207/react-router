@@ -1,15 +1,6 @@
-import { Switch, Route, Link, useLocation } from 'react-router-dom';
-
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-}
+import { Switch, Route, Link } from 'react-router-dom';
 
 function App() {
-  const query = useQuery();
-  const name = query.get('name');
-
-  console.log(name);
-
   return (
     <div>
       <nav>
